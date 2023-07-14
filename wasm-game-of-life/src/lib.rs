@@ -40,9 +40,14 @@ impl Universe {
                 if delta_row == 0 && delta_col == 0 {
                     continue;
                 }
+
+                let neighbor_row = (row + delta_row) % self.height;
+                let neightbor_col = (column + delta_col) % self.width;
+                let idx = self.get_index(neighbor_row, neightbor_col);
+                count += self.cells[idx] as u8;
             }
         }
 
-        1
+        count
     }
 }
